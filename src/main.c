@@ -21,7 +21,7 @@
     SOFTWARE.
  */
 
-#include "mcc_generated_files/mcc.h"
+#include "mcc.h"
 #include "ir_transmitter.h"
 #include "pin_definitions.h"
 /*

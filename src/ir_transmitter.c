@@ -1,9 +1,9 @@
 #include "ir_transmitter.h"
 #include "pin_definitions.h"
-#include "mcc_generated_files/device_config.h"
-#include "mcc_generated_files/pwm2.h"
-#include "mcc_generated_files/tmr2.h"
-#include "mcc_generated_files/tmr0.h"
+#include "device_config.h"
+#include "pwm2.h"
+#include "tmr2.h"
+#include "tmr0.h"
 #define RECEIVER_ADDRESS 0
 
 enum sending_state last_sent;
