@@ -1,24 +1,24 @@
- /**
-   PWM2 Generated Driver API Header File
+/**
+  PWM2 Generated Driver API Header File
  
-   @Company
-     Microchip Technology Inc. 
+  @Company
+    Microchip Technology Inc. 
 
-   @File Name
-    pwm2.h
+  @File Name
+   pwm2.h
 
-   @Summary
-     This is the generated header file for the PWM2 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+  @Summary
+    This is the generated header file for the PWM2 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
  
-   @Description
-     This header file provides APIs for driver for PWM2.
-     Generation Information :
-         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.80.0
-         Device            :  PIC10F322
-         Driver Version    :  2.01
-     The generated drivers are tested against the following:
-         Compiler          :  XC8 2.10 and above or later
-         MPLAB             :  MPLAB X 5.30
+  @Description
+    This header file provides APIs for driver for PWM2.
+    Generation Information :
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.80.0
+        Device            :  PIC10F322
+        Driver Version    :  2.01
+    The generated drivers are tested against the following:
+        Compiler          :  XC8 2.10 and above or later
+        MPLAB             :  MPLAB X 5.30
  */
 
 /*
@@ -42,100 +42,100 @@
     CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
-*/
+ */
 
 #ifndef PWM2_H
- #define PWM2_H
- 
- /**
-   Section: Included Files
+#define PWM2_H
+
+/**
+  Section: Included Files
  */
 
- #include <xc.h>
- #include <stdint.h>
+#include <xc.h>
+#include <stdint.h>
 
- #ifdef __cplusplus  // Provide C++ Compatibility
+#ifdef __cplusplus  // Provide C++ Compatibility
 
-     extern "C" {
+extern "C" {
 
- #endif
+#endif
 
- /**
-   Section: Macro Declarations
- */
+    /**
+      Section: Macro Declarations
+     */
 
- #define PWM2_INITIALIZE_DUTY_VALUE    25
+#define PWM2_INITIALIZE_DUTY_VALUE    25
 
- /**
-   Section: PWM Module APIs
- */
+    /**
+      Section: PWM Module APIs
+     */
 
- /**
-   @Summary
-     Initializes the PWM2
+    /**
+      @Summary
+        Initializes the PWM2
 
-   @Description
-     This routine initializes the EPWM2_Initialize
-     This routine must be called before any other PWM2 routine is called.
-     This routine should only be called once during system initialization.
+      @Description
+        This routine initializes the EPWM2_Initialize
+        This routine must be called before any other PWM2 routine is called.
+        This routine should only be called once during system initialization.
 
-   @Preconditions
-     None
+      @Preconditions
+        None
 
-   @Param
-     None
+      @Param
+        None
 
-   @Returns
-     None
+      @Returns
+        None
 
-   @Comment
+      @Comment
      
 
-  @Example
-     <code>
-     uint16_t dutycycle;
+     @Example
+        <code>
+        uint16_t dutycycle;
 
-     PWM2_Initialize();
-     PWM2_LoadDutyValue(dutycycle);
-     </code>
-  */
- void PWM2_Initialize(void);
+        PWM2_Initialize();
+        PWM2_LoadDutyValue(dutycycle);
+        </code>
+     */
+    void PWM2_Initialize(void);
 
- /**
-   @Summary
-     Loads 16-bit duty cycle.
+    /**
+      @Summary
+        Loads 16-bit duty cycle.
 
-   @Description
-     This routine loads the 16 bit duty cycle value.
+      @Description
+        This routine loads the 16 bit duty cycle value.
 
-   @Preconditions
-     PWM2_Initialize() function should have been called 
-         before calling this function.
+      @Preconditions
+        PWM2_Initialize() function should have been called 
+            before calling this function.
 
-   @Param
-     Pass 16bit duty cycle value.
+      @Param
+        Pass 16bit duty cycle value.
 
-   @Returns
-     None
+      @Returns
+        None
 
-   @Example
-     <code>
-     uint16_t dutycycle;
+      @Example
+        <code>
+        uint16_t dutycycle;
 
-     PWM2_Initialize();
-     PWM2_LoadDutyValue(dutycycle);
-     </code>
- */
- void PWM2_LoadDutyValue(uint16_t dutyValue);
+        PWM2_Initialize();
+        PWM2_LoadDutyValue(dutycycle);
+        </code>
+     */
+    void PWM2_LoadDutyValue(uint16_t dutyValue);
 
- 
- #ifdef __cplusplus  // Provide C++ Compatibility
 
-     }
+#ifdef __cplusplus  // Provide C++ Compatibility
 
- #endif
+}
 
- #endif	//PWM2_H
- /**
-  End of File
+#endif
+
+#endif	//PWM2_H
+/**
+ End of File
  */

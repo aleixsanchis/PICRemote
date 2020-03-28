@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.10 and above
         MPLAB 	          :  MPLAB X 5.30	
-*/
+ */
 
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
@@ -42,14 +42,14 @@
     CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
-*/
+ */
 
 #ifndef PIN_MANAGER_H
 #define PIN_MANAGER_H
 
 /**
   Section: Included Files
-*/
+ */
 
 #include <xc.h>
 
@@ -65,6 +65,16 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
+// get/set IO_RA3 aliases
+#define IO_RA3_PORT                 PORTAbits.RA3
+#define IO_RA3_WPU                  WPUAbits.WPUA3
+#define IO_RA3_GetValue()           PORTAbits.RA3
+#define IO_RA3_SetPullup()          do { WPUAbits.WPUA3 = 1; } while(0)
+#define IO_RA3_ResetPullup()        do { WPUAbits.WPUA3 = 0; } while(0)
+#define IR_OUTPUT PORTAbits.RA1
+#define SHIFT_REG_SH_NLD PORTAbits.RA0
+#define SHIFT_REG_CLK PORTAbits.RA2
+#define SHIFT_REG_INPUT PORTAbits.RA3
 /**
    @Param
     none
@@ -75,7 +85,7 @@
    @Example
     PIN_MANAGER_Initialize();
  */
-void PIN_MANAGER_Initialize (void);
+void PIN_MANAGER_Initialize(void);
 
 /**
  * @Param
@@ -94,4 +104,4 @@ void PIN_MANAGER_IOC(void);
 #endif // PIN_MANAGER_H
 /**
  End of File
-*/
+ */

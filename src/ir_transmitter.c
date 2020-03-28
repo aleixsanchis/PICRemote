@@ -1,41 +1,40 @@
 #include "ir_transmitter.h"
-#include "pin_definitions.h"
+#include "pin_manager.h"
 #include "device_config.h"
 #include "pwm2.h"
 #include "tmr2.h"
-#include "tmr0.h"
 #define RECEIVER_ADDRESS 0
 
 uint8_t last_command_sent = 0xFF;
-static inline void send_pwm_burst(){
-    // ENABLE PWM OUTPUT
+
+static void send_pwm_burst() {
     TMR2 = 0x00;
-    PWM2CONbits.PWM2OE = 1;
+    // PWM IS ENABLED BY SETTING RA0 back to an output
+    TRISAbits.TRISA0 = 0;
     TMR2_StartTimer();
 }
 
-static inline void stop_pwm_burst(){
+static inline void stop_pwm_burst() {
     TMR2_StopTimer();
-    PWM2CONbits.PWM2OE = 0;
-    IR_OUTPUT = 0;
+    // BY SETTING RA0 to input, PWM is disabled
+    TRISAbits.TRISA0 = 1;
 }
 
-static void nec_send_header(){
+static void nec_send_header() {
     send_pwm_burst();
-    __delay_ms(9);
+    __delay_us(9000);
     stop_pwm_burst();
     __delay_us(4500);
 }
 
-static void nec_send_value(uint8_t value){
-    for(uint8_t i = 0; i<8; i++){
-        if(value & 0x1){
+static void nec_send_value(uint8_t value) {
+    for (uint8_t i = 0; i < 8; i++) {
+        if (value & 0x1) {
             send_pwm_burst();
             __delay_us(562.5);
             stop_pwm_burst();
             __delay_us(1687.5);
-        }
-        else{
+        } else {
             send_pwm_burst();
             __delay_us(562.5);
             stop_pwm_burst();
@@ -44,8 +43,9 @@ static void nec_send_value(uint8_t value){
         value = value >> 1;
     }
 }
-static void nec_send_frame(uint8_t address, uint8_t command){
-    // HEADER: 8 mS PULSE
+
+static void nec_send_frame(uint8_t address, uint8_t command) {
+    // HEADER: 9 mS PULSE
     nec_send_header();
     // ADDRESS
     nec_send_value(address);
@@ -57,15 +57,14 @@ static void nec_send_frame(uint8_t address, uint8_t command){
     nec_send_value(~command);
     // FINAL PAUSE
     stop_pwm_burst();
-    __delay_us(625.5);
+    __delay_us(562.5);
 }
 
-void ir_emit(uint8_t data){
-    if(data != last_command_sent){
+void ir_emit(uint8_t data) {
+    if (1) {
         nec_send_frame(RECEIVER_ADDRESS, data);
         last_command_sent = data;
-    }
-    else{
+    } else {
         // SEND REPEAT CODE
     }
 }

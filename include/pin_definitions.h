@@ -31,11 +31,7 @@
 #ifndef XC_PIN_DEFINITIONS_H
 #define	XC_PIN_DEFINITIONS_H
 #include <xc.h> // include processor files - each processor file is guarded.
-#define IR_OUTPUT PORTAbits.RA1
-#define SHIFT_REG_SH_NLD PORTAbits.RA0
-#define SHIFT_REG_CLK PORTAbits.RA1
-#define SHIFT_REG_CLK_INH PORTAbits.RA2
-#define SHIFT_REG_INPUT PORTAbits.RA3
+
 
 
 #ifdef	__cplusplus

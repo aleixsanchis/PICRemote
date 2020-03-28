@@ -32,18 +32,6 @@
 #define	XC_IR_TRANSMITTER_H
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
-enum sending_state {
-    LAST_HIGH,
-    LAST_LOW
-};
-
-enum nec_timings {
-    NEC_HEADER_US,
-    NEC_HEADER_SPACE_US,
-    NEC_BURST,
-    NEC_0_SPACE,
-    NEC_1_SPACE
-};
 void ir_emit(uint8_t data);
 #ifdef	__cplusplus
 extern "C" {

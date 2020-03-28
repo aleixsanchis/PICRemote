@@ -60,12 +60,15 @@
     // Set the PWM to the options selected in the PIC10 / PIC12 / PIC16 / PIC18 MCUs.
     // PWM2POL active_hi; PWM2OE disabled; PWM2EN enabled; 
     PWM2CON = 0x80;   
+    
+    PWM2CONbits.PWM2OE = 1;
 
     // PWM2DCH 6; 
     PWM2DCH = 0x06;   
 
     // PWM2DCL 1; 
     PWM2DCL = 0x40;   
+    
 
  }
 

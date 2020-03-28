@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.10 and above or later
         MPLAB             :  MPLAB X 5.30
-*/
+ */
 
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
@@ -42,7 +42,7 @@
     CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
-*/
+ */
 
 #ifndef MCC_H
 #define	MCC_H
@@ -52,7 +52,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <conio.h>
-#include "interrupt_manager.h"
 #include "pwm2.h"
 #include "tmr2.h"
 #include "tmr0.h"
@@ -100,4 +99,4 @@ void WDT_Initialize(void);
 #endif	/* MCC_H */
 /**
  End of File
-*/
+ */

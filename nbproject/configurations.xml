@@ -12,11 +12,8 @@
         <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/tmr2.h</itemPath>
         <itemPath>mcc_generated_files/pwm2.h</itemPath>
-        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
-        <itemPath>mcc_generated_files/tmr0.h</itemPath>
       </logicalFolder>
       <itemPath>include/ir_transmitter.h</itemPath>
-      <itemPath>include/pin_definitions.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -33,8 +30,6 @@
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/pwm2.c</itemPath>
         <itemPath>mcc_generated_files/tmr2.c</itemPath>
-        <itemPath>mcc_generated_files/tmr0.c</itemPath>
-        <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
       </logicalFolder>
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <itemPath>src/ir_transmitter.c</itemPath>
@@ -59,7 +54,7 @@
         <targetDevice>PIC10F322</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
@@ -213,6 +208,9 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </PICkit3PlatformTool>
+      <Simulator>
+        <property key="W0701_CLC_CLCOUT_AS_INPUT" value="report"/>
+      </Simulator>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
       </XC8-CO>

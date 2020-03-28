@@ -56,7 +56,6 @@
 */
 
 volatile uint8_t timer0ReloadVal;
-void (*TMR0_InterruptHandler)(void);
 /**
   Section: TMR0 APIs
 */
@@ -74,21 +73,8 @@ void TMR0_Initialize(void)
     // Load the TMR value to reload variable
     timer0ReloadVal= 115;
 
-    // Set Default Interrupt Handler
-    TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
-}
-
-void TMR0_disable_interrupt(){
-    // Disabling TMR0 interrupt
-    INTCONbits.TMR0IE = 0;
-}
-
-void TMR0_enable_interrupt(){
-    // Clear Interrupt flag before enabling the interrupt
+    // Clear Interrupt flag
     INTCONbits.TMR0IF = 0;
-    
-    // Enabling TMR0 interrupt
-    INTCONbits.TMR0IE = 1;
 }
 
 uint8_t TMR0_ReadTimer(void)
@@ -112,32 +98,11 @@ void TMR0_Reload(void)
     TMR0 = timer0ReloadVal;
 }
 
-void TMR0_ISR(void)
+bool TMR0_HasOverflowOccured(void)
 {
-
-    // Clear the TMR0 interrupt flag
-    INTCONbits.TMR0IF = 0;
-
-    TMR0 = timer0ReloadVal;
-
-    if(TMR0_InterruptHandler)
-    {
-        TMR0_InterruptHandler();
+    // check if  overflow has occurred by checking the TMRIF bit
+    return(INTCONbits.TMR0IF);
     }
-
-    // add your TMR0 interrupt custom code
-}
-
-
-void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
-    TMR0_InterruptHandler = InterruptHandler;
-}
-
-void TMR0_DefaultInterruptHandler(void){
-    // add your TMR0 interrupt custom code
-    // or set custom function using TMR0_SetInterruptHandler()
-}
-
 /**
   End of File
 */
