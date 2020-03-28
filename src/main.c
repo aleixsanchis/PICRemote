@@ -48,21 +48,18 @@ void main(void)
             // CHECK IF ANY INPUT IS PRESSED
             uint8_t input = SHIFT_REG_INPUT;
             
-            
-            // IF PRESSED SEND TO IR EMITTER
-            if(input == HIGH) {
+            // IF PRESSED (PULLED TO LOW) SEND TO IR EMITTER
+            if(input == LOW) {
                 // DISABLE CLOCK
                 SHIFT_REG_CLK_INH = 0;
                 ir_emit(i);
             }
-            
             // SHIFT REGISTER
             SHIFT_REG_CLK_INH = 1;
             SHIFT_REG_SH_NLD = 1;
             SHIFT_REG_CLK = 1;
+            SHIFT_REG_CLK = 0;
         }
-        
-        
     }
 }   
 /**

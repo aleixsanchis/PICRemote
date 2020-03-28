@@ -74,14 +74,21 @@ void TMR0_Initialize(void)
     // Load the TMR value to reload variable
     timer0ReloadVal= 115;
 
-    // Clear Interrupt flag before enabling the interrupt
-    INTCONbits.TMR0IF = 0;
-
-    // Enabling TMR0 interrupt
-    INTCONbits.TMR0IE = 1;
-
     // Set Default Interrupt Handler
     TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
+}
+
+void TMR0_disable_interrupt(){
+    // Disabling TMR0 interrupt
+    INTCONbits.TMR0IE = 0;
+}
+
+void TMR0_enable_interrupt(){
+    // Clear Interrupt flag before enabling the interrupt
+    INTCONbits.TMR0IF = 0;
+    
+    // Enabling TMR0 interrupt
+    INTCONbits.TMR0IE = 1;
 }
 
 uint8_t TMR0_ReadTimer(void)

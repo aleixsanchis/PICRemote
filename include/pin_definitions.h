@@ -30,8 +30,7 @@
 // more than once.  
 #ifndef XC_PIN_DEFINITIONS_H
 #define	XC_PIN_DEFINITIONS_H
-#include <xc.h> // include processor files - each processor file is guarded.  
-
+#include <xc.h> // include processor files - each processor file is guarded.
 #define IR_OUTPUT PORTAbits.RA1
 #define SHIFT_REG_SH_NLD PORTAbits.RA0
 #define SHIFT_REG_CLK PORTAbits.RA1

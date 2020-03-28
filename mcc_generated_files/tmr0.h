@@ -97,6 +97,10 @@
 */
 void TMR0_Initialize(void);
 
+void TMR0_disable_interrupt(void);
+
+void TMR0_enable_interrupt(void);
+
 /**
   @Summary
     Reads the TMR0 register.
