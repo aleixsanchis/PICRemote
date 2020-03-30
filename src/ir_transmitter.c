@@ -25,15 +25,15 @@ uint8_t last_command_sent = 0xFF;
 
 static void send_pwm_burst() {
     TMR2 = 0x00;
-    // PWM IS ENABLED BY SETTING RA0 back to an output
-    TRISAbits.TRISA0 = 0;
+    // PWM IS ENABLED BY SETTING RA1 back to an output
+    TRISAbits.TRISA1 = 0;
     TMR2_StartTimer();
 }
 
 static inline void stop_pwm_burst() {
     TMR2_StopTimer();
-    // BY SETTING RA0 to input, PWM is disabled
-    TRISAbits.TRISA0 = 1;
+    // BY SETTING RA1 to input, PWM is disabled
+    TRISAbits.TRISA1 = 1;
 }
 
 static void nec_send_header() {
